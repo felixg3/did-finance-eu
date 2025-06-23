@@ -68,17 +68,7 @@ Where:
 
 ## Limitations & Future Extensions
 
-### Current Limitations
-
-**Data Frequency**: The analysis uses monthly data, which may not capture short-term market reactions immediately following policy announcements. Higher-frequency daily data would provide more precise estimates of the treatment effect timing and magnitude, allowing for event study analysis around the exact announcement date.
-
-**Control Group Selection**: While Czech Republic and Poland serve as reasonable control countries due to their similar economic characteristics and EU membership status, they may not perfectly capture the counterfactual path for Hungary. The parallel trends assumption underlying the difference-in-differences approach requires that treatment and control countries would have followed similar yield trajectories in the absence of treatment, which cannot be directly tested in the post-treatment period.
-
-### Future Research Extensions
-
-**Credit Default Swap Integration**: Incorporating credit default swap (CDS) spreads would provide a more comprehensive measure of sovereign risk perception. CDS data offers higher frequency observations and represents pure credit risk, complementing bond yield analysis which may be influenced by liquidity factors and duration risk.
-
-**Synthetic Control Method**: Implementing synthetic control methodology could address control group limitations by constructing an optimal weighted combination of donor countries that best matches Hungary's pre-treatment characteristics. This approach would provide more robust counterfactual estimates and allow for transparent assessment of the quality of the synthetic control unit through pre-treatment fit diagnostics.
+This analysis is preliminary. It uses monthly benchmark yields which smooth over short-term market dynamics. Daily or intraday data would allow for sharper inference around the announcement window. The control group is limited to Czechia and Poland; a broader synthetic control with weighted donors may produce a more credible counterfactual. We also abstract from other measures of sovereign risk. Incorporating credit default swap (CDS) spreads would provide a purer gauge of market perceptions and could be used in a panel with more granular frequency. Finally, we ignore potential spillover effects across countries and assume parallel trends. Further work should test the robustness of these assumptions and explore alternative specifications such as local projections or dynamic DiD models. Additional predictors like inflation or exchange rates might help account for macroeconomic shocks that differentially affect yields. Overall, this notebook offers a minimal working example to estimate the average treatment effect, serving as a foundation for richer empirical analyses.
 
 ## Project Organization
 
