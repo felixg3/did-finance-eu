@@ -123,3 +123,15 @@ This analysis is preliminary. It uses monthly benchmark yields which smooth over
 
 --------
 
+
+## Daily Synthetic-Control & Dynamic-DiD Extension
+
+This extension augments the monthly analysis with high‑frequency market data. The `get_daily_market_data.py` utility downloads daily ten‑year benchmark yields for the EU‑27 and the United Kingdom from the ECB Statistical Data Warehouse and scrapes five‑year CDS quotes from *worldgovernmentbonds.com*. The script harmonises the series into a tidy panel with columns `date`, `country`, `bond_yield` and `cds_spread` stored in `data/processed/bonds.parq` and `cds.parq`.
+
+Using these daily yields, `2.0-synthetic_control.ipynb` constructs a synthetic control for Hungary. Non‑negative weights on the 27 donor countries are estimated via convex optimisation to minimise the pre‑announcement root mean squared prediction error before the EU funds freeze on 22 December 2022. The notebook plots Hungarian yields against their synthetic counterpart and saves the daily gap series. Leave‑one‑out placebos confirm that the observed post‑event divergence is atypical among donors.
+
+`3.0-dynamic_did.ipynb` merges the synthetic gap with the full panel to run a Sun–Abraham style event study around the freeze date. Country and day fixed effects absorb common shocks while leads and lags of the treatment indicator trace out the dynamic response. Although illustrative numbers depend on the sample used here, coefficients peak roughly 20 basis points above zero shortly after the announcement when controlling for exchange rate and volatility surprises.
+
+`4.0-spillovers_local_proj.ipynb` sketches local projection impulse responses for Czechia, Poland and Slovakia. For each horizon up to 20 business days we regress future yield changes on the contemporaneous Hungarian shock and plot the resulting impulse responses with 90 % confidence bands. The point estimates are small but demonstrate how the framework can be extended to capture cross‑country spillovers.
+
+Overall this daily extension shows how synthetic control and dynamic DiD techniques complement the monthly analysis. The accompanying notebooks are fully executable and provide a scaffold for more detailed investigations once higher‑quality data become available.
