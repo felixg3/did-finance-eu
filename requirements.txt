@@ -1,4 +1,13 @@
 pandas
-statsmodels
+pyarrow
+requests
+beautifulsoup4
+lxml
+numpy
 matplotlib
+statsmodels
+linearmodels
+cvxpy
+tqdm
+python-dateutil
 notebook
