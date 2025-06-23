@@ -11,3 +11,4 @@ cvxpy
 tqdm
 python-dateutil
 notebook
+ecbdata
